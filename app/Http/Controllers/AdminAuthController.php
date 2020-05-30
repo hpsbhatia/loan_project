@@ -65,7 +65,4 @@ class AdminAuthController extends Controller
         session()->flash('message', 'Just Logged Out!');
         return redirect('/staff');
     }
-
-
-
 }

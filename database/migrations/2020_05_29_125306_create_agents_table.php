@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransactionsTable extends Migration
+class CreateAgentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('agents', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('number');
+            $table->unsignedInteger('user_id')->comment('borrower is user and borrower uses user information');
+            $table->string('document_path');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('No Action');
         });
     }
 
@@ -26,6 +31,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('transactions');
+        Schema::dropIfExists('agents');
     }
 }

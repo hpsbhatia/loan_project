@@ -21,7 +21,7 @@ class Staff extends Model implements AuthenticatableContract,
      *
      * @var string
      */
-    protected $table = 'staff';
+    protected $table = 'staffs';
 
     protected $fillable = ['name','username','email','phone','password','status'];
 
